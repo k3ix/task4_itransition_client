@@ -2,37 +2,134 @@
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+.navBar {
+  width: 100%;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #333;
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.navbtn {
+  float: left;
+  display: block;
+  text-align: center;
+  padding: 14px 16px !important;
+  text-decoration: none;
+  color: white !important;
+  transition: opacity linear 0.1s;
+  transition: background-color linear 0.1s;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.logoutbtn {
+  float: right;
+  display: block;
+  padding: 14px 16px !important;
+  color: white !important;
+  transition: opacity linear 0.1s;
+  transition: background-color linear 0.1s;
+}
+
+.navbtn:hover, .logoutbtn:hover {
+  opacity: 0.5;
+  background-color: #111 !important;
+}
+
+
+
+.loginForm, .registerForm {
+  border: 3px solid #f1f1f1;
+}
+
+#loginFormField, #registerFormField, #writeMessageFormField {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+}
+
+.submitbtn {
+  background-color: #333;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+}
+
+.submitbtn:hover {
+  background-color: #111;
+}
+
+.messagesList-container, .usersList-container {
+  display: inline-block;
+
+}
+
+.usersList-container.h3 {
+  padding: 0;
+  margin: 0;
+}
+
+.messagesList-container {
+  float: left;
+  width: 55%;
+  maxWidth: 900;
+}
+
+.usersList-container {
+  width: 35%;
+  float: right;
+}
+
+.messagesList {
+  padding-top: 0px !important;
+}
+
+.messageItem {
+  border: 2px solid black;
+  transition: background-color linear 0.1s;
+}
+
+.messageItem:hover {
+  cursor: pointer;
+  background-color: #f5f1f1;
+}
+
+.messageDate {
+  display: block;
+  float: right !important;
+  text-align: right !important;
+}
+
+.messageTopic {
+  text-align: center !important;
+}
+
+.usersList {
+  padding-top: 0px !important;
+}
+
+.userItem {
+  border: 2px solid black;
+  transition: background-color linear 0.1s;
+}
+
+.userItem:hover {
+  cursor: pointer;
+  background-color: #f5f1f1;
+}
+
+.messageContainer {
+  float: left;
+}
+
+.msg-item {
+  text-align: left;
+  padding-bottom: 20px;
 }
