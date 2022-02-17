@@ -21,7 +21,7 @@ function App() {
     });
 
     useEffect(() => {
-        axios.get("http://localhost:3001/users/auth", {
+        axios.get("https://task4-itransition-mail.herokuapp.com/users/auth", {
             headers: {
                 accessToken: localStorage.getItem("accessToken"),
             }
