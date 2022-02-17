@@ -51,7 +51,7 @@ const WriteMessage = () => {
         username: Yup.string().required()
     })
 
-    const onSubmit = async (data) => {
+    const onSubmit = (data) => {
         data.text = freeText;
         data.fromUserId = authState.id;
         data.fromUsername = authState.username;
@@ -72,14 +72,10 @@ const WriteMessage = () => {
                                 alert(response.data.error);
                             } else {
                                 data.id = response.data.id
-                                console.log(data);
                             }
                         });
                     console.log(data)
-                    setTimeout(async () => {
-                        await socket.emit("sendMessage", data)
-                    }, 1000)
-
+                    socket.emit("sendMessage", data)
                     history("/");
                 } else {
                     alert(response.data.error);
