@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { Button } from "@mui/material";
 
 
-const NavigationMenu = (authState) => {
+const NavigationMenu = ( authState ) => {
     let history = useNavigate();
 
     const homeClick = () => {

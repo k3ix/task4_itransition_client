@@ -10,8 +10,8 @@ const LogOut = ( authState, setAuthState ) => {
 
     const logOut = () => {
         localStorage.removeItem("accessToken");
-        setAuthState(false);
         history('/login');
+        history(0);
     }
     return (
         <div style={{float: "right"}}>
