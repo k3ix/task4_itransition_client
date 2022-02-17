@@ -40,7 +40,6 @@ const WriteMessage = () => {
             }
         })
     }, []);
-    console.log(authState);
     const initialValues = {
         topic: "",
         username: "",
@@ -62,27 +61,22 @@ const WriteMessage = () => {
         usernames.forEach(async (value) => {
             const dataForApi = Object.assign({},data);
             userForApi.username = value.trim();
-            console.log(userForApi)
             await axios.post("https://task4-itransition-mail.herokuapp.com/users/userByUsername", userForApi)
                 .then(async (response) => {
                 if (!response.data.error) {
                     dataForApi.forUsername = response.data.username;
                     dataForApi.forUserId = response.data.id;
-                    console.log(dataForApi, data)
                     await axios.post("https://task4-itransition-mail.herokuapp.com/messages/write-message", dataForApi)
                         .then((response) => {
                             if (response.data.error) {
                                 alert(response.data.error);
                             } else {
-                                console.log(response.data.id);
                                 dataForApi.id = response.data.id;
 
                                 socket.emit("sendMessage", dataForApi);
                             }
                         });
-                    console.log(dataForApi)
-
-                    //history("/");
+                    history("/");
                 }
             });
         })
