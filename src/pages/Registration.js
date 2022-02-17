@@ -14,7 +14,7 @@ const Registration = () => {
     };
 
     const onSubmit = (data) => {
-        axios.post("https://task4-itransition-mail.herokuapp.com/register", data).then((response) => {
+        axios.post("https://task4-itransition-mail.herokuapp.com/users/register", data).then((response) => {
             if (response.data.error) {
                 alert(response.data.error);
             } else {
