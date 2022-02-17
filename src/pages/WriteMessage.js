@@ -39,7 +39,7 @@ const WriteMessage = () => {
                 history("/login");
             }
         })
-    }, [history]);
+    }, []);
     console.log(authState);
     const initialValues = {
         topic: "",
@@ -59,26 +59,30 @@ const WriteMessage = () => {
             username: ""
         };
         const usernames = data.username.split(",")
-        usernames.map((value) => {
+        usernames.forEach(async (value) => {
+            const dataForApi = Object.assign({},data);
             userForApi.username = value.trim();
             console.log(userForApi)
-            axios.post("https://task4-itransition-mail.herokuapp.com/users/userByUsername", userForApi).then( async (response) => {
+            await axios.post("https://task4-itransition-mail.herokuapp.com/users/userByUsername", userForApi)
+                .then(async (response) => {
                 if (!response.data.error) {
-                    data.forUsername = response.data.username;
-                    data.forUserId = response.data.id;
-                    axios.post("https://task4-itransition-mail.herokuapp.com/messages/write-message", data)
-                        .then( async (response) => {
+                    dataForApi.forUsername = response.data.username;
+                    dataForApi.forUserId = response.data.id;
+                    console.log(dataForApi, data)
+                    await axios.post("https://task4-itransition-mail.herokuapp.com/messages/write-message", dataForApi)
+                        .then((response) => {
                             if (response.data.error) {
                                 alert(response.data.error);
                             } else {
-                                data.id = response.data.id
+                                console.log(response.data.id);
+                                dataForApi.id = response.data.id;
+
+                                socket.emit("sendMessage", dataForApi);
                             }
                         });
-                    console.log(data)
-                    socket.emit("sendMessage", data)
-                    history("/");
-                } else {
-                    alert(response.data.error);
+                    console.log(dataForApi)
+
+                    //history("/");
                 }
             });
         })
