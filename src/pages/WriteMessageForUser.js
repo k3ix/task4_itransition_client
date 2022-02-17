@@ -68,6 +68,7 @@ const WriteMessageForUser = () => {
                 if (response.data.error) {
                     alert(response.data.error);
                 } else {
+                    data.id = response.data.id;
                     console.log('send');
                     await socket.emit("sendMessage", data);
                     history("/");
