@@ -77,6 +77,8 @@ const WriteMessage = () => {
                             }
                         });
                     history("/");
+                } else {
+                    alert(response.data.error);
                 }
             });
         })
